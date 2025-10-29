@@ -1,0 +1,67 @@
+Implementação do Trabalho da disciplina de Redes de Computadores.
+
+Na pasta há dois arquivos '.c', um servidor.c e um cliente.c.
+Os arquivos remetem ao código para a criação de um servidor e de um navegador.
+
+
+Em cliente.c exite um cliente HTTP simples, na linguagem C, capaz de acessar um servidor web, requisitar arquivos e salvá-los localmente — funcionando como um navegador em modo texto.
+
+Funcionamento:
+    1. Extrai e interpreta a URL (protocolo, host, porta, caminho e extensão do arquivo).
+    2. Traduz o host para IP e estabelece conexão via socket.
+    3. Envia uma requisição HTTP do tipo GET.
+    4. Recebe a resposta e salva o conteúdo em arquivo local:
+        5. Se houver extensão (ex: .jpg, .pdf), o arquivo é salvo com esse nome.
+        6. Caso contrário, o conteúdo é salvo como index.html.
+
+    Tratamento de erros:
+        Exibe mensagem caso o host não exista ou a conexão falhe.
+        Detecta erro '404 Not Found' e remove o arquivo vazio gerado.
+
+
+Em servidor.c é implementado um servidor HTTP simples em linguagem C.
+Ele é capaz de servir arquivos de um diretório local (por padrão, ./paginasServidor) através de conexões TCP na porta 5050.
+
+Funcionamento:
+    Ao acessar http://localhost:5050, o servidor:
+        Retorna o arquivo index.html.
+
+    Atende requisições HTTP GET.
+    Serve arquivos locais de diferentes tipos (HTML, imagens, PDF, texto, etc.).
+    Detecta automaticamente o tipo da extensão do arquivo solicitado.
+    Gera página HTML com listagem de diretório se não houver index.html.
+    Retorna erro 404 caso o arquivo requisitado não exista.
+
+    Loop principal do servidor:
+        Cria o socket e configura o endereço (AF_INET, SOCK_STREAM, porta 5050).
+        Executa o bind() e o listen() para começar a ouvir conexões.
+        Aceita clientes com accept() e lê a requisição HTTP recebida.
+        Interpreta o método e o caminho (apenas GET é esperado).
+        Localiza o arquivo solicitado dentro de ./paginasServidor.
+        Se / for requisitado:
+            Retorna index.html.
+        Envia o cabeçalho HTTP e o conteúdo do arquivo.
+        Caso o arquivo não exista, envia uma resposta "404 Not Found" e exclui o arquivo onde seria salvo o conteúdo.
+
+
+Sobre a execução:
+- Ambos os arquivos são compilados com o comando make
+
+Para usar o navegador:
+-> ./mandioca <solicitação>
+
+    exemplos de solicitação:
+    ./mandioca http://www.ufsj.edu.br/teste/imagem.jpg
+    ./mandioca http://localhost:5050/index.html
+
+
+Para iniciar o servidor:
+-> ./server
+
+
+--> o comando 'make clean' pode ser usado para apagar os arquivos gerados.
+
+
+Licensa: GNU General Public License v3.0
+
+### teste para outro servidor http://paginapessoal.utfpr.edu.br/frufrek/imagens/imagem01.jpg

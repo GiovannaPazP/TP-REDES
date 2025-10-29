@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Mandioca Server</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Press Start 2P', cursive;
+            background: url('fundo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            animation: backgroundGlow 10s infinite alternate;
+        }
+
+        @keyframes backgroundGlow {
+            0% { filter: brightness(1); }
+            50% { filter: brightness(1.4); }
+            100% { filter: brightness(1); }
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-top: 50px;
+            text-shadow: 3px 3px 10px #000;
+            color: #ffff00;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #ffcc00;
+            text-shadow: 2px 2px #000;
+            margin-bottom: 40px;
+        }
+
+        a {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px 40px;
+            background: linear-gradient(45deg, #ff9900, #ffff00);
+            color: #000;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 20px;
+            box-shadow: 4px 4px 15px #000;
+            transition: transform 0.3s, background 0.3s, color 0.3s;
+        }
+
+        a:hover {
+            background: linear-gradient(45deg, #ffff00, #ff6600);
+            transform: scale(1.3) rotate(-5deg);
+            color: #fff;
+        }
+
+        .sparkle {
+            font-size: 2em;
+            color: #ff0;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Mandioca Server <span class="sparkle">✨</span></h1>
+    <p>Bem-vindo ao único servidor de Mandioca da web!</p>
+    <a href="teste.txt">Acesse o arquivo teste.txt</a>
+    <a href="mandioca.html">Acesse a página da receita de Mandioca</a>
+    <a href="nak_chuya.txt">Acesse o poema de Nakahara Chuya.txt</a>
+    <a href="edith.jpg">Acesse a imagem edith.jpg</a>
+    <a href="apresentacao.pdf">Acesse o arquivo apresentacao.pdf</a>
+</body>
+</html>
